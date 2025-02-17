@@ -9,16 +9,17 @@ let size = prompt("Enter row width-Must be even (Eg: 16):"); //todo: add check f
 for (sizeX = 0; sizeX < size; sizeX++) {
   for (sizeY = 0; sizeY < size; sizeY++) {
     const content = document.createElement("div");
-    content.setAttribute("id", `${sizeX}-${sizeY}`);
+    content.setAttribute("id", `${sizeY}-${sizeX}`);
     content.classList.add("content");
     content.setAttribute(
       "style",
-      "opacity: 0; transition: 0.2s ease; background:black;"
+      "opacity: 0; transition: 0.2s ease; background:yellow;"
     );
     content.style.gridColumnStart = sizeX + 1;
     content.style.gridRowStart = sizeY + 1;
     content.addEventListener("click", () => {
       content.style.opacity = 1;
+      content.innerText = content.id;
     });
     container.appendChild(content);
   }
