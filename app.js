@@ -35,8 +35,10 @@ for (sizeX = 0; sizeX < size; sizeX++) {
           content.style.backgroundColor = "green";
           document.querySelector(`#${id1}`).style.backgroundColor = "green";
         } else {
-          content.style.opacity = 0;
-          document.querySelector(`#${id1}`).style.opacity = 0;
+          setTimeout(() => {
+            content.style.opacity = 0;
+            document.querySelector(`#${id1}`).style.opacity = 0;
+          }, 1500);
         }
 
         choice1 = 0;
@@ -48,10 +50,11 @@ for (sizeX = 0; sizeX < size; sizeX++) {
 }
 populateGrid(container);
 
-const clear = document.querySelectorAll(".content");
+const grid = document.querySelectorAll(".content");
 const btn = document.querySelector("#btn");
 btn.addEventListener("click", () => {
-  for (const content of clear) {
+  container.style.opacity = 0;
+  for (const content of grid) {
     content.style.opacity = 0;
   }
 });
