@@ -24,7 +24,9 @@ for (let sizeX = 0; sizeX < width; sizeX++) {
     content.style.gridColumnStart = sizeX + 1;
     content.style.gridRowStart = sizeY + 1;
     content.addEventListener("click", () => {
-      //todo: if cells are green, ignore them for the rest of the game
+      if (content.style.backgroundColor === "green") {
+        return;
+      }
       content.style.opacity = 1;
       if (choice1 === 0) {
         choice1 = Number(content.innerText);
