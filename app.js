@@ -11,7 +11,10 @@ let id2;
 let score = 0;
 const scoreElement = document.getElementById("score");
 //todo: let there be 3 difficulty levels
-let width = prompt("Enter row width-Must be even (Eg: 16):"); //todo: add check for even input
+let width = 1;
+while (width % 2 !== 0) {
+  width = prompt("Enter row width-Must be even (Eg: 16):");
+}
 for (let sizeX = 0; sizeX < width; sizeX++) {
   for (let sizeY = 0; sizeY < width; sizeY++) {
     const content = document.createElement("div");
