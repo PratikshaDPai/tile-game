@@ -19,11 +19,11 @@ for (sizeX = 0; sizeX < size; sizeX++) {
     content.style.gridRowStart = sizeY + 1;
     content.addEventListener("click", () => {
       content.style.opacity = 1;
-      content.innerText = content.id;
     });
     container.appendChild(content);
   }
 }
+populateGrid(container);
 
 const clear = document.querySelectorAll(".content");
 const btn = document.querySelector("#btn");
@@ -32,3 +32,23 @@ btn.addEventListener("click", () => {
     content.style.opacity = 0;
   }
 });
+
+function populateCell(container, number) {
+  const size = container.children.length;
+  const index = Math.floor(Math.random() * size);
+  const cell = container.children[index];
+  if (cell.innerText === "") {
+    cell.innerText = number;
+  } else {
+    populateCell(container, number);
+  }
+}
+
+function populateGrid(container) {
+  const size = container.children.length;
+  const maxNum = size / 2;
+  for (let i = 1; i <= maxNum; i++) {
+    populateCell(container, i);
+    populateCell(container, i);
+  }
+}
