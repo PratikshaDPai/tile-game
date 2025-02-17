@@ -32,7 +32,6 @@ for (let sizeX = 0; sizeX < width; sizeX++) {
         console.log(`Choice.Invalid`, { reason: "Cell is already green" });
         return;
       }
-      content.style.opacity = 1;
       if (choice1 === 0) {
         choice1 = Number(content.innerText);
         console.log(`Choice1.Change`, { choice1 });
@@ -62,7 +61,14 @@ for (let sizeX = 0; sizeX < width; sizeX++) {
             setTimeout(eraseBoard(), 1500);
           }
         } else {
+          // copy choices since they may get overwritten before 1 sec finishes
+          const choice1Copy = choice1;
+          const choice2Copy = choice2;
           setTimeout(() => {
+            console.log(`Choice.Unsuccessful`, {
+              choice1: choice1Copy,
+              choice2: choice2Copy,
+            });
             content.style.opacity = 0;
             document.querySelector(`#${id1}`).style.opacity = 0;
           }, 1000);
@@ -71,6 +77,8 @@ for (let sizeX = 0; sizeX < width; sizeX++) {
         choice1 = 0;
         choice2 = 0;
       }
+
+      content.style.opacity = 1;
     });
     container.appendChild(content);
   }
