@@ -9,6 +9,7 @@ let choice2 = 0;
 let id1;
 let id2;
 let score = 0;
+let isBoardLocked = false;
 const scoreElement = document.getElementById("score");
 //todo: let there be 3 difficulty levels
 let width = 1;
@@ -30,6 +31,10 @@ for (let sizeX = 0; sizeX < width; sizeX++) {
     content.addEventListener("click", () => {
       if (content.style.backgroundColor === "green") {
         console.log(`Choice.Invalid`, { reason: "Cell is already green" });
+        return;
+      }
+      if (isBoardLocked) {
+        console.log(`Choice.Invalid`, { reason: "Board is locked" });
         return;
       }
       if (choice1 === 0) {
@@ -64,13 +69,17 @@ for (let sizeX = 0; sizeX < width; sizeX++) {
           // copy choices since they may get overwritten before 1 sec finishes
           const choice1Copy = choice1;
           const choice2Copy = choice2;
+          isBoardLocked = true;
           setTimeout(() => {
             console.log(`Choice.Unsuccessful`, {
               choice1: choice1Copy,
               choice2: choice2Copy,
             });
+
             content.style.opacity = 0;
             document.querySelector(`#${id1}`).style.opacity = 0;
+
+            isBoardLocked = false;
           }, 1000);
         }
 
