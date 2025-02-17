@@ -14,6 +14,7 @@ const scoreElement = document.getElementById("score");
 let width = 1;
 while (width % 2 !== 0) {
   width = prompt("Enter row width-Must be even (Eg: 16):");
+  console.log(`Width.Update`, { width });
 }
 for (let sizeX = 0; sizeX < width; sizeX++) {
   for (let sizeY = 0; sizeY < width; sizeY++) {
@@ -28,21 +29,35 @@ for (let sizeX = 0; sizeX < width; sizeX++) {
     content.style.gridRowStart = sizeY + 1;
     content.addEventListener("click", () => {
       if (content.style.backgroundColor === "green") {
+        console.log(`Choice.Invalid`, { reason: "Cell is already green" });
         return;
       }
       content.style.opacity = 1;
       if (choice1 === 0) {
         choice1 = Number(content.innerText);
+        console.log(`Choice1.Change`, { choice1 });
         id1 = content.id;
+        console.log(`Id1.Change`, { id1 });
       } else {
         choice2 = Number(content.innerText);
+        console.log(`Choice2.Change`, { choice2 });
         id2 = content.id;
-        if (choice1 === choice2 && id1 !== id2) {
+        console.log(`Id2.Change`, { id2 });
+        if (choice1 === choice2) {
+          if (id1 === id2) {
+            console.log(`Choice.Invalid`, {
+              reason: "Cannot click on the same cell twice",
+            });
+            return;
+          }
+          console.log(`Choice.Successful`, { choice: choice1 });
           content.style.backgroundColor = "green";
           document.querySelector(`#${id1}`).style.backgroundColor = "green";
           score++;
           scoreElement.textContent = score;
+          console.log(`Score.Update`, { score });
           if (score === maxNum) {
+            console.log(`Score.Win`, { score });
             alert("YOU WON!");
             setTimeout(eraseBoard(), 1500);
           }
@@ -68,6 +83,8 @@ function eraseBoard() {
     content.style.opacity = 0;
     content.innerText = "";
   }
+
+  console.log(`Board.Erase`);
 }
 
 function populateCell(container, number) {
@@ -88,4 +105,6 @@ function populateGrid(container) {
     populateCell(container, i);
     populateCell(container, i);
   }
+
+  console.log(`Board.Populate`);
 }
