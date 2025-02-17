@@ -1,15 +1,20 @@
+"use strict";
 const container = document.querySelector(".container");
 container.style.display = "grid";
 container.style.height = "100vh";
 const content = document.createElement("div");
 let sizeX = 0;
 let sizeY = 0;
+let choice1 = 0;
+let choice2 = 0;
+let id1;
+let id2;
 //todo: let there be 3 difficulty levels
 let size = prompt("Enter row width-Must be even (Eg: 16):"); //todo: add check for even input
 for (sizeX = 0; sizeX < size; sizeX++) {
   for (sizeY = 0; sizeY < size; sizeY++) {
     const content = document.createElement("div");
-    content.setAttribute("id", `${sizeY}-${sizeX}`);
+    content.setAttribute("id", `cell-${sizeY}-${sizeX}`);
     content.classList.add("content");
     content.setAttribute(
       "style",
@@ -18,6 +23,20 @@ for (sizeX = 0; sizeX < size; sizeX++) {
     content.style.gridColumnStart = sizeX + 1;
     content.style.gridRowStart = sizeY + 1;
     content.addEventListener("click", () => {
+      if (choice1 === 0) {
+        choice1 = Number(content.innerText);
+        id1 = content.id;
+      } else {
+        choice2 = Number(content.innerText);
+        id2 = content.id;
+        if (choice1 === choice2 && id1 !== id2) {
+          content.style.backgroundColor = "green";
+          document.querySelector(`#${id1}`).style.backgroundColor = "green";
+        }
+
+        choice1 = 0;
+        choice2 = 0;
+      }
       content.style.opacity = 1;
     });
     container.appendChild(content);
@@ -52,3 +71,7 @@ function populateGrid(container) {
     populateCell(container, i);
   }
 }
+
+// function executeTurn(container) {
+//   let;
+// }
