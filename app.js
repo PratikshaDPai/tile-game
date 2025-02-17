@@ -13,7 +13,7 @@ let isBoardLocked = false;
 const scoreElement = document.getElementById("score");
 //todo: let there be 3 difficulty levels
 let width = 1;
-while (width % 2 !== 0) {
+while (width < 1 || width % 2 !== 0) {
   width = prompt("Enter row width-Must be even (Eg: 16):");
   console.log(`Width.Update`, { width });
 }
