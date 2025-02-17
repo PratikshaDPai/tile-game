@@ -23,6 +23,8 @@ for (sizeX = 0; sizeX < size; sizeX++) {
     content.style.gridColumnStart = sizeX + 1;
     content.style.gridRowStart = sizeY + 1;
     content.addEventListener("click", () => {
+      //todo: if cells are green, ignore them for the rest of the game
+      content.style.opacity = 1;
       if (choice1 === 0) {
         choice1 = Number(content.innerText);
         id1 = content.id;
@@ -32,12 +34,14 @@ for (sizeX = 0; sizeX < size; sizeX++) {
         if (choice1 === choice2 && id1 !== id2) {
           content.style.backgroundColor = "green";
           document.querySelector(`#${id1}`).style.backgroundColor = "green";
+        } else {
+          content.style.opacity = 0;
+          document.querySelector(`#${id1}`).style.opacity = 0;
         }
 
         choice1 = 0;
         choice2 = 0;
       }
-      content.style.opacity = 1;
     });
     container.appendChild(content);
   }
