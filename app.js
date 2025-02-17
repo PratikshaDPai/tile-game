@@ -8,12 +8,8 @@ let choice1 = 0;
 let choice2 = 0;
 let id1;
 let id2;
-let scr = 0;
-const score = document.getElementById("score");
-const btn = document.querySelector("#btn");
-btn.addEventListener("click", () => {
-  eraseBoard();
-});
+let score = 0;
+const scoreElement = document.getElementById("score");
 //todo: let there be 3 difficulty levels
 let width = prompt("Enter row width-Must be even (Eg: 16):"); //todo: add check for even input
 for (let sizeX = 0; sizeX < width; sizeX++) {
@@ -39,9 +35,9 @@ for (let sizeX = 0; sizeX < width; sizeX++) {
         if (choice1 === choice2 && id1 !== id2) {
           content.style.backgroundColor = "green";
           document.querySelector(`#${id1}`).style.backgroundColor = "green";
-          scr++;
-          score.textContent = scr;
-          if (scr === maxNum) {
+          score++;
+          scoreElement.textContent = score;
+          if (score === maxNum) {
             alert("YOU WON!");
             setTimeout(eraseBoard(), 1500);
           }
@@ -49,7 +45,7 @@ for (let sizeX = 0; sizeX < width; sizeX++) {
           setTimeout(() => {
             content.style.opacity = 0;
             document.querySelector(`#${id1}`).style.opacity = 0;
-          }, 1500);
+          }, 1000);
         }
 
         choice1 = 0;
@@ -88,7 +84,3 @@ function populateGrid(container) {
     populateCell(container, i);
   }
 }
-
-// function executeTurn(container) {
-//   let;
-// }
