@@ -31,8 +31,8 @@ const colorPallette = ["#eeaf61", "#fba57f", "#f1838f", "#d478ab", "#9141a2"];
 
 //todo: let there be 3 difficulty levels
 let width = 1;
-while (width < 1 || width % 2 !== 0) {
-  width = prompt("Enter row width-Must be even (Eg: 16):");
+while (width < 1 || width % 2 !== 0 || width > 8) {
+  width = prompt("Enter row width: (2,4,6,8)");
   console.log(`Width.Update`, { width });
 }
 for (let sizeX = 0; sizeX < width; sizeX++) {
