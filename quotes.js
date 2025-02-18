@@ -4,15 +4,6 @@ export default [
     author: "Oscar Wilde",
   },
   {
-    quote:
-      "Two things are infinite: the universe and human stupidity; and I'm not sure about the universe.",
-    author: "Albert Einstein",
-  },
-  {
-    quote: "So many books, so little time.",
-    author: "Frank Zappa",
-  },
-  {
     quote: "A room without books is like a body without a soul.",
     author: "Marcus Tullius Cicero",
   },
@@ -34,8 +25,9 @@ export default [
     author: "Oscar Wilde",
   },
   {
-    quote: "Without music, life would be a mistake.",
-    author: "Friedrich Nietzsche",
+    quote:
+      "Yesterday is history, tomorrow is a mystery, but today is a gift. That's why it's called the present",
+    author: "Master Oogway",
   },
   {
     quote: "We accept the love we think we deserve.",

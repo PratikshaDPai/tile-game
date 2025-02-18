@@ -2,7 +2,7 @@
 import quotes from "./quotes.js";
 
 const container = document.querySelector(".container");
-const startColor = "yellow";
+const startColor = "salmon";
 container.style.display = "grid";
 container.style.height = "100vh";
 const content = document.createElement("div");
