@@ -62,8 +62,11 @@ for (let sizeX = 0; sizeX < width; sizeX++) {
           console.log(`Score.Update`, { score });
           if (score === maxNum) {
             console.log(`Score.Win`, { score });
-            alert("YOU WON!");
-            setTimeout(eraseBoard(), 1500);
+
+            setTimeout(() => {
+              alert("YOU WON!");
+              eraseBoard();
+            }, 100);
           }
         } else {
           // copy choices since they may get overwritten before 1 sec finishes
@@ -95,11 +98,7 @@ for (let sizeX = 0; sizeX < width; sizeX++) {
 populateGrid(container);
 
 function eraseBoard() {
-  const grid = document.querySelectorAll(".content");
-  for (const content of grid) {
-    content.style.opacity = 0;
-    content.innerText = "";
-  }
+  container.textContent = "";
 
   console.log(`Board.Erase`);
 }
