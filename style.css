@@ -4,20 +4,35 @@
 body {
   font-family: "Poppins", sans-serif;
   background: linear-gradient(120deg, #fbc4ab, #ff9a8b);
-  /* display: flex;
-  justify-content: center;
-  align-items: center;
   height: 100vh;
-  flex-direction: column; */
+  display: flex;
+  justify-content: center;
+  margin: 0px;
+  flex-direction: column;
   text-align: center;
 }
 
 .container {
+  flex: 1;
   font-size: 32px;
   font-weight: 700;
   color: antiquewhite;
   font-family: sans-serif;
 }
+
+.content {
+  margin: 8px;
+  max-height: 100vmin; /* Uses the smaller of viewport width or height */
+  max-width: 100vmin;
+  font-weight: bold;
+  border-radius: 15px;
+  padding: 30px;
+  /* background: linear-gradient(45deg, #ff9a8b, #fbc4ab); */
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+  display: inline-block;
+  transition: transform 0.3s ease-in-out;
+}
+
 h3 {
   font-size: 24px;
   color: #fff;
@@ -26,6 +41,7 @@ h3 {
 }
 
 #score {
+  align-self: center;
   font-size: 48px;
   font-weight: bold;
   color: #fffbf5;

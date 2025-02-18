@@ -4,8 +4,8 @@ export default [
     author: "Oscar Wilde",
   },
   {
-    quote: "A room without books is like a body without a soul.",
-    author: "Marcus Tullius Cicero",
+    quote: "Some infinities are bigger than other infinities.",
+    author: "John Green",
   },
   {
     quote: "Be the change that you wish to see in the world.",
@@ -14,10 +14,6 @@ export default [
   {
     quote: "If you tell the truth, you don't have to remember anything.",
     author: "Mark Twain",
-  },
-  {
-    quote: "A friend is someone who knows all about you and still loves you.",
-    author: "Elbert Hubbard",
   },
   {
     quote:

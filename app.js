@@ -4,7 +4,6 @@ import quotes from "./quotes.js";
 const container = document.querySelector(".container");
 const startColor = "salmon";
 container.style.display = "grid";
-container.style.height = "100vh";
 const content = document.createElement("div");
 let maxNum = 0;
 let choice1 = 0;
@@ -28,7 +27,7 @@ const deepColorPallette = [
   "#ce4993",
   "#6a0d83",
 ];
-const colorPallette = ["#f1b578", "#fba57f", "#f1838f", "#d478ab", "#9141a2"];
+const colorPallette = ["#eeaf61", "#fba57f", "#f1838f", "#d478ab", "#9141a2"];
 
 //todo: let there be 3 difficulty levels
 let width = 1;
@@ -43,8 +42,9 @@ for (let sizeX = 0; sizeX < width; sizeX++) {
     content.classList.add("content");
     content.setAttribute(
       "style",
-      `opacity: 0; transition: 0.2s ease; background:${startColor};`
+      ` color: transparent; opacity:0.5; transition: 0.2s ease; background:${startColor};`
     );
+
     content.style.gridColumnStart = sizeX + 1;
     content.style.gridRowStart = sizeY + 1;
     content.addEventListener("click", () => {
@@ -101,18 +101,20 @@ for (let sizeX = 0; sizeX < width; sizeX++) {
               choice1: choice1Copy,
               choice2: choice2Copy,
             });
-
-            content.style.opacity = 0;
-            document.querySelector(`#${id1}`).style.opacity = 0;
+            content.style.color = "antiquewhite";
+            content.style.opacity = 0.5;
+            content.style.color = "transparent";
+            document.querySelector(`#${id1}`).style.opacity = 0.5;
+            document.querySelector(`#${id1}`).style.color = "transparent";
 
             isBoardLocked = false;
-          }, 1000);
+          }, 500);
         }
 
         choice1 = 0;
         choice2 = 0;
       }
-
+      content.style.color = "antiquewhite";
       content.style.opacity = 1;
     });
     container.appendChild(content);
