@@ -40,26 +40,32 @@ let width = 1;
 easy.addEventListener("click", function (event) {
   width = 4;
   difficulty.classList.add("unset");
-  startGame();
+  renderBoard();
 });
 medium.addEventListener("click", function (event) {
   width = 6;
   difficulty.classList.add("unset");
-  startGame();
+  renderBoard();
 });
 hard.addEventListener("click", function (event) {
   width = 8;
   difficulty.classList.add("unset");
-  startGame();
+  renderBoard();
 });
 newGame.addEventListener("click", function (event) {
-  container.textContent = "";
-  body.style.flexDirection = "row";
-  difficulty.classList.remove("unset");
+  startGame();
 });
+
 function startGame() {
+  container.textContent = "";
+  body.style.flexDirection = "";
+  scoreElement.innerText = 0;
+  body.style.background = "linear-gradient(120deg, #fbc4ab, #ff9a8b)";
+  difficulty.classList.remove("unset");
+}
+
+function renderBoard() {
   eraseBoard();
-  score = 0;
   for (let sizeX = 0; sizeX < width; sizeX++) {
     for (let sizeY = 0; sizeY < width; sizeY++) {
       const content = document.createElement("div");
@@ -74,47 +80,39 @@ function startGame() {
       content.style.gridRowStart = sizeY + 1;
       content.addEventListener("click", () => {
         if (content.style.backgroundColor !== startColor) {
-          console.log(`Choice.Invalid`, { reason: "Cell is already complete" });
           return;
         }
         if (isBoardLocked) {
-          console.log(`Choice.Invalid`, { reason: "Board is locked" });
           return;
         }
         if (choice1 === 0) {
           choice1 = Number(content.innerText);
-          console.log(`Choice1.Change`, { choice1 });
+
           id1 = content.id;
-          console.log(`Id1.Change`, { id1 });
         } else {
           choice2 = Number(content.innerText);
-          console.log(`Choice2.Change`, { choice2 });
+
           id2 = content.id;
-          console.log(`Id2.Change`, { id2 });
+
           if (choice1 === choice2) {
             if (id1 === id2) {
-              console.log(`Choice.Invalid`, {
-                reason: "Cannot click on the same cell twice",
-              });
               return;
             }
             const color =
               colorPallette[Math.floor(Math.random() * colorPallette.length)];
-            console.log(`Choice.Successful`, { choice: choice1, color });
+
             content.style.backgroundColor = color;
             document.querySelector(`#${id1}`).style.backgroundColor = color;
             score++;
             scoreElement.textContent = score;
-            console.log(`Score.Update`, { score });
-            if (score === maxNum) {
-              console.log(`Score.Win`, { score });
-              body.style.flexDirection = "column";
-              setTimeout(() => {
-                eraseBoard();
-                generateGradient();
 
-                container.textContent = getRandomQuote();
-              }, 100);
+            if (score === maxNum) {
+              body.style.flexDirection = "column";
+
+              eraseBoard();
+              generateGradient();
+
+              container.textContent = getRandomQuote();
             }
           } else {
             // copy choices since they may get overwritten before 1 sec finishes
@@ -122,10 +120,6 @@ function startGame() {
             const choice2Copy = choice2;
             isBoardLocked = true;
             setTimeout(() => {
-              console.log(`Choice.Unsuccessful`, {
-                choice1: choice1Copy,
-                choice2: choice2Copy,
-              });
               content.style.color = "antiquewhite";
               content.style.opacity = 0.5;
               content.style.color = "transparent";
@@ -150,8 +144,6 @@ function startGame() {
 
 function eraseBoard() {
   container.textContent = "";
-
-  console.log(`Board.Erase`);
 }
 
 function populateCell(container, number) {
@@ -172,8 +164,6 @@ function populateGrid(container) {
     populateCell(container, i);
     populateCell(container, i);
   }
-
-  console.log(`Board.Populate`);
 }
 
 function getRandomQuote() {
