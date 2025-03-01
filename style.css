@@ -3,18 +3,51 @@
 
 body {
   font-family: "Poppins", sans-serif;
-  min-height: 100vh;
+  height: 100vh;
   background: linear-gradient(120deg, #fbc4ab, #ff9a8b);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; /* Prevents tiling */
   display: flex;
-  justify-content: stretch;
-  align-items: stretch;
+  justify-content: space-around;
   margin: 0px;
-  flex-direction: column;
+  flex-direction: row;
   text-align: center;
 }
 
+.score-container {
+  margin-top: 10%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* .difficulty-modal {
+  display: none;
+  position: fixed;
+  z-index: 1000; 
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); 
+  justify-content: center;
+  align-items: center;
+} */
+
+.modal-content span {
+  display: inline-block;
+  font-size: 26px;
+  cursor: pointer;
+  margin: 10px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: transform 0.2s ease-in-out;
+}
+
 .container {
-  flex: 1;
+  margin: 30px;
+  display: flex;
+  justify-content: center;
   font-size: 32px;
   font-weight: 700;
   color: antiquewhite;
@@ -23,12 +56,15 @@ body {
 
 .content {
   margin: 8px;
-  max-height: 100vmin; /* Uses the smaller of viewport width or height */
-  max-width: 100vmin;
+  max-height: 70vh; /* Uses the smaller of viewport width or height */
+  max-width: 70vw;
+  min-height: 30px;
+  min-width: 30px;
+  aspect-ratio: 1 / 1;
   font-weight: bold;
   border-radius: 15px;
-  padding: 30px;
-  /* background: linear-gradient(45deg, #ff9a8b, #fbc4ab); */
+  padding: 10px;
+  background: linear-gradient(45deg, #ff9a8b, #fbc4ab);
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
   display: inline-flex;
   justify-content: center;
@@ -37,6 +73,7 @@ body {
 }
 
 h3 {
+  display: inline-flex;
   font-size: 24px;
   color: #fff;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
@@ -76,4 +113,10 @@ h3 {
 
 #score {
   animation: pop 0.5s ease-out;
+}
+
+@media screen and (max-width: 700px) {
+  body {
+    flex-direction: column;
+  }
 }
