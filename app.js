@@ -10,7 +10,7 @@ const easy = document.querySelector(".easy");
 const medium = document.querySelector(".medium");
 const hard = document.querySelector(".hard");
 const newGame = document.querySelector("#new-game");
-const soundButton = document.querySelector(".sound-button");
+const soundButton = document.querySelector("#sound");
 let maxNum = 0;
 let choice1 = 0;
 let choice2 = 0;
@@ -34,10 +34,10 @@ let isSoundOn = true;
 soundButton.addEventListener("click", function (event) {
   if (isSoundOn) {
     backgroundMusic.play();
-    soundButton.innerText = "🔊";
+    soundButton.src = "./assets/speaker.svg";
   } else {
     backgroundMusic.pause();
-    soundButton.innerText = "🔇";
+    soundButton.src = "./assets/speaker-muted.svg";
   }
   isSoundOn = !isSoundOn;
 });
