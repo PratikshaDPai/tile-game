@@ -19,20 +19,11 @@ let score = 0;
 let isBoardLocked = false;
 const scoreElement = document.getElementById("score");
 const difficulty = document.querySelector(".difficulty-modal");
-const pastelColorPallette = [
-  "#f4c9a4",
-  "#fbc4ab",
-  "#f9a8b2",
-  "#dba3c8",
-  "#b38dc0",
-];
-const deepColorPallette = [
-  "#eeaf61",
-  "#fb9062",
-  "#ee5d6c",
-  "#ce4993",
-  "#6a0d83",
-];
+const bubblePop = new Audio("./assets/bubblepop.mp3");
+const backgroundMusic = new Audio("./assets/soft-piano-keys.mp3");
+backgroundMusic.loop = true; // Enable looping
+backgroundMusic.volume = 0.5;
+
 const colorPallette = ["#eeaf61", "#fba57f", "#f1838f", "#d478ab", "#9141a2"];
 let width = 1;
 easy.addEventListener("click", function (event) {
@@ -64,6 +55,7 @@ function startGame() {
 }
 
 function renderBoard() {
+  backgroundMusic.play();
   eraseBoard();
   for (let sizeX = 0; sizeX < width; sizeX++) {
     for (let sizeY = 0; sizeY < width; sizeY++) {
@@ -87,6 +79,8 @@ function renderBoard() {
         if (isBoardLocked) {
           return;
         }
+        bubblePop.load();
+        bubblePop.play();
         if (choice1 === 0) {
           choice1 = Number(content.innerText);
 
