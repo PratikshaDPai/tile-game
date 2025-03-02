@@ -10,6 +10,7 @@ const easy = document.querySelector(".easy");
 const medium = document.querySelector(".medium");
 const hard = document.querySelector(".hard");
 const newGame = document.querySelector("#new-game");
+const soundButton = document.querySelector(".sound-button");
 let maxNum = 0;
 let choice1 = 0;
 let choice2 = 0;
@@ -27,6 +28,18 @@ backgroundMusic.volume = 0.5;
 const colorPallette = ["#eeaf61", "#fba57f", "#f1838f", "#d478ab", "#9141a2"];
 const tileColorPalette = ["#fba57f", "#f1838f", "#d478ab", "#be7cc3"];
 let width = 1;
+let isSoundOn = true;
+
+soundButton.addEventListener("click", function (event) {
+  if (isSoundOn) {
+    backgroundMusic.play();
+    soundButton.innerText = "🔊";
+  } else {
+    backgroundMusic.pause();
+    soundButton.innerText = "🔇";
+  }
+  isSoundOn = !isSoundOn;
+});
 easy.addEventListener("click", function (event) {
   width = 4;
   difficulty.classList.add("unset");
