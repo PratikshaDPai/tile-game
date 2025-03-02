@@ -57,6 +57,7 @@ newGame.addEventListener("click", function (event) {
 function startGame() {
   container.textContent = "";
   body.style.flexDirection = "";
+  score = 0;
   scoreElement.innerText = 0;
   body.style.background = "linear-gradient(120deg, #fbc4ab, #ff9a8b)";
   difficulty.classList.remove("unset");
