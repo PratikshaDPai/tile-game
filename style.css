@@ -10,6 +10,7 @@ body {
   background-repeat: no-repeat; /* Prevents tiling */
   display: flex;
   justify-content: space-around;
+  align-items: stretch;
   margin: 0px;
   flex-direction: row;
   text-align: center;
@@ -73,7 +74,6 @@ body {
 .container {
   margin: 30px;
   display: flex;
-  font-size: 32px;
   font-weight: 700;
   color: antiquewhite;
   font-family: sans-serif;
@@ -88,6 +88,7 @@ body {
   aspect-ratio: 1 / 1;
   font-weight: bold;
   border-radius: 15px;
+  font-size: 32px;
   padding: 10px;
   background: linear-gradient(45deg, #ff9a8b, #fbc4ab);
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
@@ -167,5 +168,22 @@ h3 {
 @media screen and (max-width: 700px) {
   body {
     flex-direction: column;
+  }
+
+  .container {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+  .content {
+    font-size: 15px;
+    min-height: 25px;
+    min-width: 25px;
+    aspect-ratio: 1 / 1;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .content {
+    margin: 2px;
   }
 }
