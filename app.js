@@ -25,6 +25,7 @@ backgroundMusic.loop = true; // Enable looping
 backgroundMusic.volume = 0.5;
 
 const colorPallette = ["#eeaf61", "#fba57f", "#f1838f", "#d478ab", "#9141a2"];
+const tileColorPalette = ["#fba57f", "#f1838f", "#d478ab", "#be7cc3"];
 let width = 1;
 easy.addEventListener("click", function (event) {
   width = 4;
@@ -95,7 +96,9 @@ function renderBoard() {
               return;
             }
             const color =
-              colorPallette[Math.floor(Math.random() * colorPallette.length)];
+              tileColorPalette[
+                Math.floor(Math.random() * tileColorPalette.length)
+              ];
 
             content.style.backgroundColor = color;
             document.querySelector(`#${id1}`).style.backgroundColor = color;
