@@ -17,6 +17,7 @@ let choice2 = 0;
 let id1;
 let id2;
 let score = 0;
+let moves = 0;
 let isBoardLocked = false;
 const scoreElement = document.getElementById("score");
 const difficulty = document.querySelector(".difficulty-modal");
@@ -63,6 +64,7 @@ function startGame() {
   container.textContent = "";
   body.style.flexDirection = "";
   score = 0;
+  moves = 0;
   scoreElement.innerText = 0;
   body.style.background = "linear-gradient(120deg, #fbc4ab, #ff9a8b)";
   difficulty.classList.remove("unset");
@@ -103,7 +105,8 @@ function renderBoard() {
           choice2 = Number(content.innerText);
 
           id2 = content.id;
-
+          moves++;
+          scoreElement.textContent = moves;
           if (choice1 === choice2) {
             if (id1 === id2) {
               return;
@@ -116,7 +119,6 @@ function renderBoard() {
             content.style.backgroundColor = color;
             document.querySelector(`#${id1}`).style.backgroundColor = color;
             score++;
-            scoreElement.textContent = score;
 
             if (score === maxNum) {
               body.style.flexDirection = "column";
