@@ -26,7 +26,7 @@ const backgroundMusic = new Audio("./assets/soft-piano-keys.mp3");
 backgroundMusic.loop = true; // Enable looping
 backgroundMusic.volume = 0.5;
 
-const colorPallette = ["#eeaf61", "#fba57f", "#f1838f", "#d478ab", "#9141a2"];
+const colorPallette = ["#9141a2", "#d478ab", "#f1838f", "#fba57f", "#eeaf61"];
 const tileColorPalette = ["#fba57f", "#f1838f", "#d478ab", "#be7cc3"];
 let width = 1;
 let isSoundOn = true;
@@ -187,9 +187,7 @@ function getRandomQuote() {
 
 function generateGradient() {
   // Join the colors into a gradient string
-  const gradient = `linear-gradient(45deg, ${colorPallette
-    .reverse()
-    .join(", ")})`;
+  const gradient = `linear-gradient(45deg, ${colorPallette.join(", ")})`;
 
   // Apply the gradient as the background
   document.body.style.background = gradient;
