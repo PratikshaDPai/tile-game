@@ -34,8 +34,6 @@ const deepColorPallette = [
   "#6a0d83",
 ];
 const colorPallette = ["#eeaf61", "#fba57f", "#f1838f", "#d478ab", "#9141a2"];
-
-//todo: let there be 3 difficulty levels
 let width = 1;
 easy.addEventListener("click", function (event) {
   width = 4;
@@ -75,6 +73,9 @@ function renderBoard() {
         "style",
         `color: transparent; opacity:0.5; transition: 0.2s ease; background:${startColor};`
       );
+      if (width == 4) {
+        content.style.fontSize = "32px";
+      }
 
       content.style.gridColumnStart = sizeX + 1;
       content.style.gridRowStart = sizeY + 1;
